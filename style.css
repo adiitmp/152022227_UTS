@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    text-align: center;
+}
+
+#data-display {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 0;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+p {
+    margin: 5px 0;
+    color: #333333;
+}
+
+strong {
+    color: #000;
+}

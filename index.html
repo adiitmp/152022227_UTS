@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DATA JSON ADIT</h1>
+    <div id="data-display"></div>
+    
+    <script>
+        // Fetch the JSON data from the API
+        fetch('http://localhost:3000/data')
+            .then(response => response.json())
+            .then(data => {
+                const displayDiv = document.getElementById('data-display');
+                
+                // Displaying suhu, humidity, and rata-rata
+                displayDiv.innerHTML = `
+                    <p><strong>Suhu Max:</strong> ${data.suhumax}</p>
+                    <p><strong>Suhu Min:</strong> ${data.suhumin}</p>
+                    <p><strong>Suhu Rata-rata:</strong> ${data.suhurata}</p>
+                    <h2>Nilai Suhu Max Humidity Max</h2>
+                `;
+                
+                // Displaying each item in nilai_suhu_max_humid_max array
+                data.nilai_suhu_max_humid_max.forEach(item => {
+                    displayDiv.innerHTML += `
+                        <div class="item">
+                            <p><strong>Index:</strong> ${item.idx}</p>
+                            <p><strong>Suhu:</strong> ${item.suhu}</p>
+                            <p><strong>Humidity:</strong> ${item.humid}</p>
+                            <p><strong>Kecerahan:</strong> ${item.kecerahan}</p>
+                            <p><strong>Timestamp:</strong> ${item.timestamp}</p>
+                        </div>
+                    `;
+                });
+                
+                // Displaying each item in month_year_max array
+                displayDiv.innerHTML += `<h2>Month Year Max</h2>`;
+                data.month_year_max.forEach(item => {
+                    displayDiv.innerHTML += `
+                        <div class="item">
+                            <p><strong>Month Year:</strong> ${item.month_year}</p>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
